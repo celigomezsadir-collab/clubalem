@@ -1,0 +1,257 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* 🔒 BLOQUEO SCROLL HORIZONTAL */
+body {
+  overflow-x: hidden;
+}
+
+.home {
+  /* HEADER */
+}
+.home .header {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+.home .header img {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+}
+.home {
+  /* HERO */
+}
+.home-hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+.home {
+  /* CONTENIDO (IZQUIERDA) */
+}
+.home-hero-content {
+  width: 50%;
+  z-index: 1;
+}
+.home-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffd659;
+  margin-bottom: 1rem;
+}
+.home {
+  /* NAV BOTONES */
+}
+.home-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.home-nav .btn {
+  background-color: #ffd659;
+  padding: 0.7rem;
+  border-radius: 999px;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.home-nav .btn:hover {
+  background-color: transparent;
+  color: #ffd659;
+}
+.home {
+  /* IMAGEN (DERECHA) */
+}
+.home-hero-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: none;
+  width: 65%;
+  z-index: 0;
+}
+.home-hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.home {
+  /* PUNTOS */
+}
+.home-points {
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+.home-subtitle {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.home .points-card {
+  background: #ffd659;
+  border-radius: 20px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.home .points-card-item {
+  flex: 1;
+  font-size: 0.7rem;
+}
+.home .points-card-number {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.home {
+  /* BARRA */
+}
+.home .points-bar {
+  margin-top: 1rem;
+}
+.home .points-bar-label {
+  background: #ffd659;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+.home .points-bar-line {
+  height: 4px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+.home .points-bar-levels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  margin-top: 0.3rem;
+}
+.home {
+  /* ACTIVIDAD */
+}
+.home-activity {
+  padding: 1rem;
+}
+.home .activity-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.home .activity-item {
+  background: #ffffff;
+  padding: 0.8rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home .activity-item p {
+  font-size: 0.8rem;
+}
+.home .activity-item span {
+  font-size: 0.7rem;
+  color: #ffdd05;
+}
+.home .activity-item-points {
+  font-weight: bold;
+}
+.home .activity-item-points.negative {
+  color: red;
+}
+
+/* NAV INFERIOR */
+.bottom-nav {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  width: 90%;
+  max-width: 1000px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.8rem 0;
+  border-radius: 999px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  /* 👇 estado oculto (base) */
+  transform: translate(-50%, 100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.bottom-nav a {
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+/* 👇 estado visible (se activa con JS) */
+.bottom-nav.visible {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+/* OCULTAR MENU LATERAL AL SCROLL */
+.home-nav {
+  transition: opacity 0.3s ease;
+}
+.home-nav.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .home-hero-content {
+    width: 40%;
+  }
+  .home-hero-img {
+    width: 50%;
+  }
+  .home-title {
+    font-size: 4rem;
+  }
+  .home-nav {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .home-points {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

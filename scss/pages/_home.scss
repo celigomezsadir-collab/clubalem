@@ -1,0 +1,267 @@
+@use "../abstracts/variables" as *;
+@use "../base/animations" as *;
+
+/* 🔒 BLOQUEO SCROLL HORIZONTAL */
+body {
+  overflow-x: hidden;
+}
+
+.home {
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 1.5rem 1rem;
+
+   img { 
+    max-width: 600px; // 👈 controlás el tamaño real
+    width: 100%;
+    height: auto;
+    }
+  }
+
+  /* HERO */
+  &-hero {
+    min-height: 100vh;
+    position: relative; // 👈 clave
+    display: flex;
+    align-items: flex-start;
+    padding: 1.5rem;
+    overflow: hidden; // 
+    transition: transform 0.1s linear;
+    will-change: transform;
+  }
+
+  /* CONTENIDO (IZQUIERDA) */
+  &-hero-content {
+    width: 50%;
+    z-index: 1; // 👈 arriba de la imagen
+  }
+
+  &-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: $color-principal;
+    margin-bottom: 1rem;
+  }
+
+  /* NAV BOTONES */
+  &-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .btn {
+      background-color: $color-principal;
+      padding: 0.7rem;
+      border-radius: 999px;
+      text-align: center;
+      text-decoration: none;
+      color: $color-negro;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: $color-principal;
+    }
+  }
+
+  /* IMAGEN (DERECHA) */
+  &-hero-img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: none;
+    width: 65%; // 👈 ajustá entre 55–70%
+    z-index: 0;
+
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  /* PUNTOS */
+  &-points {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+
+  &-subtitle {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .points-card {
+    background: $color-principal;
+    border-radius: $border-radius;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    &-item {
+      flex: 1;
+      font-size: 0.7rem;
+    }
+
+    &-number {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
+  /* BARRA */
+  .points-bar {
+    margin-top: 1rem;
+
+    &-label {
+      background: $color-principal;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      display: inline-block;
+      margin-bottom: 0.3rem;
+    }
+
+    &-line {
+      height: 4px;
+      background: $color-blanco;
+      border-radius: 2px;
+    }
+
+    &-levels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6rem;
+      margin-top: 0.3rem;
+    }
+  }
+
+  /* ACTIVIDAD */
+  &-activity {
+    padding: 1rem;
+  }
+
+  .activity-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .activity-item {
+    background: $color-blanco;
+    padding: 0.8rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: 0.8rem;
+    }
+
+    span {
+      font-size: 0.7rem;
+      color: $color-acento;
+    }
+
+    &-points {
+      font-weight: bold;
+
+      &.negative {
+        color: red;
+      }
+    }
+  }
+}
+
+/* NAV INFERIOR */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+
+  width: 90%;
+  max-width: 1000px;
+
+  background: $color-blanco;
+
+  display: flex;
+  justify-content: space-around;
+  padding: 0.8rem 0;
+
+  border-radius: 999px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+
+  z-index: 1000;
+
+  /* 👇 estado oculto (base) */
+  transform: translate(-50%, 100%);
+  opacity: 0;
+
+  transition: all 0.3s ease;
+
+  a {
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+}
+
+/* 👇 estado visible (se activa con JS) */
+.bottom-nav.visible {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+/* OCULTAR MENU LATERAL AL SCROLL */
+.home-nav {
+  transition: opacity 0.3s ease;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+
+  .home {
+
+    &-hero-content {
+      width: 40%;
+    }
+
+    &-hero-img {
+      width: 50%;
+    }
+
+    &-title {
+      font-size: 4rem;
+    }
+
+    &-nav {
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    &-points {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+}
