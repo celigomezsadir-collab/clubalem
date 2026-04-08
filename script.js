@@ -2,42 +2,25 @@ const hero = document.querySelector(".home-hero");
 const sideMenu = document.querySelector(".home-nav");
 const bottomNav = document.querySelector(".bottom-nav");
 
-window.addEventListener("scroll", () => {
-  const trigger = hero.offsetHeight - 50;
+let lastScroll = 0;
 
-  if (window.scrollY > trigger) {
-    sideMenu.classList.add("hidden");
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  const trigger = window.innerHeight * 0.5;
+
+  // 🔹 DETECTAR DIRECCIÓN
+  const scrollingDown = scrollY > lastScroll;
+
+  // 🔹 MOSTRAR SOLO SI BAJA Y PASÓ EL HERO
+  if (scrollY > trigger && scrollingDown) {
     bottomNav.classList.add("visible");
+    sideMenu.classList.add("hidden");
   } else {
-    sideMenu.classList.remove("hidden");
     bottomNav.classList.remove("visible");
+    sideMenu.classList.remove("hidden");
   }
-});
 
-const hero = document.querySelector(".home-hero");
-
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
-  // cuánto se mueve el hero
-  const move = scrollY * 0.3;
-
-  hero.style.transform = `translateY(-${move}px)`;
-});
-
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
-  const move = scrollY * 0.3;
-  const opacity = 1 - scrollY / 400;
-
-  hero.style.transform = `translateY(-${move}px)`;
-  hero.style.opacity = opacity;
-});
-
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
+  // 🔹 PARALLAX
   if (scrollY < 500) {
     const move = scrollY * 0.3;
     const opacity = 1 - scrollY / 400;
@@ -45,4 +28,6 @@ window.addEventListener("scroll", () => {
     hero.style.transform = `translateY(-${move}px)`;
     hero.style.opacity = opacity;
   }
+
+  lastScroll = scrollY;
 });

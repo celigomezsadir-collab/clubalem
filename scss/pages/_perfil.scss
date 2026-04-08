@@ -1,0 +1,118 @@
+@use "../abstracts/variables" as *;
+
+.perfil {
+
+  background-color: $color-blanco;
+
+  /* HEADER */
+  &-header {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+
+    .back-btn {
+      background: $color-blanco;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: $color-negro;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  }
+
+  /* HERO */
+  &-hero {
+    width: 100%;
+    height: 45vh;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* CARD PRINCIPAL */
+  &-card {
+    background: $color-blanco;
+    margin-top: -3rem; // 👈 superposición tipo app
+    border-radius: 25px 25px 0 0;
+    padding: 1.5rem 1rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* NOMBRE */
+  &-nombre {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    color: $color-principal;
+    margin-bottom: 1rem;
+  }
+
+  /* DATOS */
+  &-datos {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    .dato {
+      flex: 1;
+      background: $color-principal; // tono suave del amarillo
+      padding: 0.7rem;
+      border-radius: 12px;
+      text-align: center;
+
+      &-titulo {
+        display: block;
+        font-size: 0.6rem;
+        font-weight: 600;
+        color: $color-secundario;
+      }
+
+      &-valor {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: $color-negro;
+      }
+    }
+  }
+
+  /* SECCIONES */
+  &-seccion {
+    margin-bottom: 1.2rem;
+
+    h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      font-size: 0.75rem;
+      color: $color-secundario;
+      line-height: 1.4;
+    }
+  }
+
+  /* TUTOR */
+  &-tutor {
+    background: $color-blanco;
+    padding: 0.8rem;
+    border-radius: 12px;
+
+    p {
+      font-size: 0.75rem;
+      margin-bottom: 0.2rem;
+    }
+  }
+}

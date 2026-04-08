@@ -1,0 +1,173 @@
+@use "../abstracts/variables" as *;
+
+.cupones {
+
+  background: #f5f5f5;
+  min-height: 100vh;
+
+  /* HEADER */
+  &-header {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+
+    .back-btn {
+      background: $color-blanco;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: $color-negro;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  }
+
+  /* HERO */
+  &-hero {
+    background: $color-principal;
+    padding: 4rem 1.5rem 2rem;
+    border-radius: 0 0 25px 25px;
+    text-align: center;
+    color: $color-negro;
+  }
+
+  &-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &-puntos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .puntos-numero {
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+
+    .puntos-texto {
+      font-size: 0.8rem;
+    }
+  }
+
+  .cupones-categoria {
+  display: flex;
+  gap: 0.8rem;
+  overflow-x: auto;
+  padding: 1rem;
+  margin-top: -1.5rem; // 👈 que se acerque al hero
+}
+
+/* ITEM */
+.cupones-categoria .icon {
+  min-width: 70px;
+  background: $color-negro;
+  border-radius: 10px;
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.1);
+
+  transition: transform 0.2s ease;
+}
+
+/* ICONO */
+.cupones-categoria .icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* TEXTO */
+.cupones-categoria .icon h4 {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: $color-blanco;
+}
+
+/* INTERACCION */
+.cupones-categoria .icon:active {
+  transform: scale(0.95);
+}
+
+  /* LISTADO */
+  &-listado {
+    padding: 1.5rem 1rem 5rem; // espacio para nav
+
+    h3 {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* CUPON CARD */
+  .cupon {
+    background: $color-blanco;
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+    &-info {
+      h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.2rem;
+      }
+
+      p {
+        font-size: 0.7rem;
+        color: #666;
+      }
+    }
+
+    &-accion {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+    }
+
+    &-puntos {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: $color-principal;
+    }
+
+    .btn-canjear {
+      background: $color-principal;
+      border: none;
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ESTADO DESHABILITADO */
+    &.disabled {
+      opacity: 0.5;
+
+      .btn-canjear {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

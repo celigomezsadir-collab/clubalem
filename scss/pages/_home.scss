@@ -22,10 +22,11 @@ body {
 
   /* HERO */
   &-hero {
-    min-height: 100vh;
+    min-height: calc(100dvh - 280px);
     position: relative; // 👈 clave
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
     padding: 1.5rem;
     overflow: hidden; // 
     transition: transform 0.1s linear;
@@ -108,6 +109,7 @@ body {
     &-item {
       flex: 1;
       font-size: 0.7rem;
+      align-content: center;
     }
 
     &-number {
@@ -205,8 +207,8 @@ body {
   z-index: 1000;
 
   /* 👇 estado oculto (base) */
-  transform: translate(-50%, 100%);
-  opacity: 0;
+  transform: translate(-50%, 0);
+  opacity: 1;
 
   transition: all 0.3s ease;
 
@@ -216,7 +218,7 @@ body {
   }
 }
 
-/* 👇 estado visible (se activa con JS) */
+/* estado visible (se activa con JS) */
 .bottom-nav.visible {
   transform: translate(-50%, 0);
   opacity: 1;
@@ -237,6 +239,10 @@ body {
 @media (min-width: 768px) {
 
   .home {
+
+    &-hero {
+      min-height: 100vh;
+    }
 
     &-hero-content {
       width: 40%;
